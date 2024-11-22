@@ -2,34 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Forum;
+use Illuminate\Http\Request;
 
 class ForumController extends Controller
 {
     public function index()
-{
-    return Forum::with('user', 'comments')->get();
-}
+    {
+        return Forum::with(['user', 'comments'])->get();
+    }
 
-public function store(Request $request)
-{
-    $request->validate([
-        'title' => 'required',
-        'body' => 'required',
-        'image' => 'nullable|image',
-    ]);
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+            'image' => 'nullable|image',
+        ]);
 
-    $path = $request->file('image') ? $request->file('image')->store('forum_images', 'public') : null;
+        $path = $request->file('image') ? $request->file('image')->store('forum_images', 'public') : null;
 
-    $forum = Forum::create([
-        'user_id' => auth()->id(),
-        'title' => $request->title,
-        'body' => $request->body,
-        'image_path' => $path,
-    ]);
+        $forum = Forum::create([
+            'user_id' => auth()->id(),
+            'title' => $request->title,
+            'body' => $request->body,
+            'image_path' => $path,
+        ]);
 
-    return response()->json($forum, 201);
-}
-
+        return response()->json($forum, 201);
+    }
 }
