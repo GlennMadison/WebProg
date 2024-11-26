@@ -2,23 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Forum extends Model
+class Thread extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'title',
-        'body',
-        'image_path',
-    ];
+    protected $fillable = ['user_id', 'title', 'body'];
 
     public function user()
     {

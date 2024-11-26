@@ -2,10 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,19 +9,25 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'forum_id',
-        'body',
-    ];
+    protected $fillable = ['user_id', 'thread_id', 'parent_comment_id', 'body'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function forum()
+    public function thread()
     {
-        return $this->belongsTo(Forum::class);
+        return $this->belongsTo(Thread::class);
+    }
+
+    public function parentComment()
+    {
+        return $this->belongsTo(Comment::class, 'parent_comment_id');
+    }
+
+    public function childComments()
+    {
+        return $this->hasMany(Comment::class, 'parent_comment_id');
     }
 }
