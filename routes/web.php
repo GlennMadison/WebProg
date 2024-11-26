@@ -6,7 +6,7 @@ use App\Http\Controllers\ForumController;
 use App\Http\Controllers\CommentController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::post('register', [AuthController::class, 'register']);
@@ -17,4 +17,3 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('forums', [ForumController::class, 'store']);
     Route::post('forums/{forum}/comments', [CommentController::class, 'store']);
 });
-
