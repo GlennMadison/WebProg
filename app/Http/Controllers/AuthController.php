@@ -6,9 +6,13 @@ use App\Models\User;
 use App\Models\DoctorCertificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    /**
+     * Register a new user.
+     */
     public function register(Request $request)
     {
         $request->validate([
@@ -19,8 +23,15 @@ class AuthController extends Controller
             'certificate' => 'required_if:role,doctor|file',
         ]);
 
-        $user = User::create($request->only(['name', 'email', 'password', 'role']));
+        // Create the user
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password), // Hash the password for security
+            'role' => $request->role,
+        ]);
 
+        // If the user is a doctor, handle the certificate upload
         if ($request->role === 'doctor' && $request->hasFile('certificate')) {
             $path = $request->file('certificate')->store('certificates', 'public');
             DoctorCertificate::create([
@@ -32,6 +43,9 @@ class AuthController extends Controller
         return response()->json(['message' => 'Registration successful'], 201);
     }
 
+    /**
+     * Handle user login and store session.
+     */
     public function login(Request $request)
     {
         $request->validate([
@@ -39,11 +53,29 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        if (!Auth::attempt($request->only(['email', 'password']))) {
+        // Attempt to log in the user
+        $credentials = $request->only(['email', 'password']);
+
+        if (!Auth::attempt($credentials)) {
             return response()->json(['error' => 'Invalid credentials'], 401);
         }
 
-        $token = $request->user()->createToken('auth_token')->plainTextToken;
-        return response()->json(['token' => $token, 'token_type' => 'Bearer']);
+        // Store user in session
+        $request->session()->put('user', Auth::user());
+
+        return response()->json(['message' => 'Login successful.']);
+    }
+
+    /**
+     * Handle user logout and destroy the session.
+     */
+    public function logout(Request $request)
+    {
+        // Forget the user session
+        $request->session()->forget('user');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return response()->json(['message' => 'Logout successful.']);
     }
 }

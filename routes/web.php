@@ -11,9 +11,10 @@ Route::get('/', function () {
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
+Route::get('forums', [ForumController::class, 'index']);
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('forums', [ForumController::class, 'index']);
-    Route::post('forums', [ForumController::class, 'store']);
-    Route::post('forums/{forum}/comments', [CommentController::class, 'store']);
+Route::middleware([\App\Http\Middleware\Authenticate::class])->group(function () {
+    Route::post('/forums', [ForumController::class, 'store']);
+    Route::post('/forums/{forum}/comments', [CommentController::class, 'store']);
 });
