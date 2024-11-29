@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\CommentController;
@@ -22,15 +23,17 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Home (List Threads)
-Route::get('/', [ThreadController::class, 'index'])->name('threads.index');
 
-// Create a new thread
-Route::get('threads/create', [ThreadController::class, 'create'])->name('threads.create');
-Route::post('threads', [ThreadController::class, 'store'])->name('threads.store');
+Route::get('/', [ThreadController::class, 'index'])->name('threads.thread.index');
 
-// Show a single thread
-Route::get('threads/{thread}', [ThreadController::class, 'show'])->name('threads.show');
 
-// Store a comment on a thread
+Route::get('threads/create', [ThreadController::class, 'create'])->name('threads.thread.create');
+Route::post('threads', [ThreadController::class, 'store'])->name('threads.thread.store');
+
+
+Route::get('threads/{thread}', [ThreadController::class, 'show'])->name('threads.thread.show');
+
 Route::post('threads/{thread}/comments', [CommentController::class, 'store'])->name('comments.store');
+
+Route::post('/vote/{type}/{id}', [VoteController::class, 'vote'])->name('vote');
+
