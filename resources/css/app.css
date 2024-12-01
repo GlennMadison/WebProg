@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
+=======
+@import "node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+>>>>>>> test

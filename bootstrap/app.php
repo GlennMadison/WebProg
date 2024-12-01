@@ -11,6 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+<<<<<<< HEAD
         return [
             \App\Http\Middleware\Authenticate::class,
             \Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks::class,
@@ -25,3 +26,14 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+=======
+        //
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })
+    ->withProviders([
+        Illuminate\Filesystem\FilesystemServiceProvider::class,
+    ])
+    ->create();
+>>>>>>> test
