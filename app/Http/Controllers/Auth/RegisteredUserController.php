@@ -28,23 +28,39 @@ class RegisteredUserController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+{
+    $request->validate([
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        'role' => ['required', 'in:normal_user,doctor'],
+        'doctor_certificate' => ['nullable', 'file', 'mimes:jpeg,png,pdf', 'max:2048'],
+    ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+    $doctorCertificatePath = null;
 
-        event(new Registered($user));
+    if ($request->role === 'doctor' && $request->hasFile('doctor_certificate')) {
 
-        Auth::login($user);
+        $filePath = $request->file('doctor_certificate')->store(
+            '', 
+            'azure' 
+        );
 
-        return redirect(route('dashboard', absolute: false));
+
+        $doctorCertificatePath = config('filesystems.disks.azure.url') . '/' . $filePath;
     }
+
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'role' => $request->role,
+        'password' => Hash::make($request->password),
+        'doctor_certificate' => $doctorCertificatePath,
+    ]);
+
+    Auth::login($user);
+
+        return redirect(route('threads.search', absolute: false));
+}
+
 }

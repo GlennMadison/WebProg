@@ -9,7 +9,7 @@ class Thread extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'body'];
+    protected $fillable = ['user_id', 'title', 'body','threads_image'];
 
     public function user()
     {
@@ -35,4 +35,10 @@ class Thread extends Model
     {
         return $this->upvotes()->where('vote_type', 'downvote')->count();
     }
+
+    public function sumVoteCount()
+    {
+        return $this->upvoteCount() - $this->downvoteCount();
+    }
+    
 }

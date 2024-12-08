@@ -1,7 +1,7 @@
-<ul class="list-group bg-light border-0">
+<ul class="list-group bg-light border-0 shadow-sm">
     @foreach ($comments as $comment)
 
-    <li class="list-group-item border-0 bg-light ms-2">
+    <li class="list-group-item border-0 bg-light ms-2 ">
         @include('profile.profileBanner', ['object' => $comment])
 
         <p class="my-3">{{ $comment->body }}</p>

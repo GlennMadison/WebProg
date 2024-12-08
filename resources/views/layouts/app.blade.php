@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -17,12 +18,18 @@
 
     @include('layouts.navigation')
 
+    <div class="d-flex" id="wrapper">
 
+        <div class="" id="sidebar-wrapper" style="width: 400px;">
+            @include('layouts.sidebar')
+        </div>
 
-    <main class="">
-        @yield('content')
-    </main>
-
+        <div id="page-content-wrapper" class="container-fluid " style="margin-top: 70px;">
+            @yield('content')
+        </div>
+    </div>
 </body>
 
+    
+</script>
 </html>

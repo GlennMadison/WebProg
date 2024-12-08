@@ -1,52 +1,118 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('Login', 'Login') }}</title>
+
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('bootstrap-icons-1.11.3/font/bootstrap-icons.css') }}" rel="stylesheet">
+</head>
+
+<body class="container d-flex justify-content-center align-items-center bg-primary" style="min-height: 100vh;">
+    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" class="border p-5 d bg-white rounded shadow" style="min-width: 20vw">
         @csrf
-
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        <div class="d-flex justify-content-center mb-2">
+            <i class="bi bi-capsule text-primary fs-1"></i>
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="mb-3">
+            <label for="name" class="form-label">{{ __('Name') }}</label>
+            <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" required autofocus
+                autocomplete="name" />
+            @if($errors->has('name'))
+            <label class="text-danger pt-1">{{ $errors->first('name') }}</label>
+            @endif
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="mb-3">
+            <label for="email" class="form-label">{{ __('Email') }}</label>
+            <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" required
+                autocomplete="username" />
+            @if($errors->has('email'))
+            <label class="text-danger pt-1">{{ $errors->first('email') }}</label>
+            @endif
         </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div class="mb-3">
+            <label for="role" class="form-label">{{ __('Role') }}</label>
+            <select id="role" name="role" class="form-select" required onchange="toggleDoctorCertificate()">
+                <option value="normal_user">Normal User</option>
+                <option value="doctor">Doctor</option>
+            </select>
+            @if($errors->has('role'))
+            <label class="text-danger pt-1">{{ $errors->first('role') }}</label>
+            @endif
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
+
+        <div id="doctor-certificate-container" class="mb-3 d-none">
+            <label for="doctor_certificate" class="form-label">{{ __('Doctor Certificate') }}</label>
+            <input id="doctor_certificate" class="form-control" type="file" name="doctor_certificate" />
+            @if($errors->has('doctor_certificate'))
+            <label class="text-danger pt-1">{{ $errors->first('doctor_certificate') }}</label>
+            @endif
+        </div>
+
+
+        <div class="mb-3">
+            <label for="password" class="form-label">{{ __('Password') }}</label>
+            <input id="password" class="form-control" type="password" name="password" required autocomplete="" />
+            @if($errors->has('password'))
+            <label class="text-danger pt-1">{{ $errors->first('password') }}</label>
+
+            @endif
+        </div>
+
+
+        <div class="mb-3">
+            <label for="password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
+            <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required
+                autocomplete="" />
+            @if($errors->has('password_confirmation'))
+            <label class="text-danger pt-1">{{ $errors->first('password_confirmation') }}</label>
+            @endif
+        </div>
+
+        <div class="d-flex justify-content-end mt-3">
+            <a class="text-muted text-decoration-none me-3" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ms-4">
+            <button type="submit" class="btn btn-primary">
                 {{ __('Register') }}
-            </x-primary-button>
+            </button>
         </div>
     </form>
-</x-guest-layout>
+
+    <script>
+        function toggleDoctorCertificate() {
+            const role = document.getElementById('role').value;
+            const certificateContainer = document.getElementById('doctor-certificate-container');
+            
+            if (role === 'doctor') {
+                certificateContainer.classList.remove('d-none');
+
+                setTimeout(() => {
+                    certificateContainer.classList.add('fade', 'show');
+                }, 10); 
+            } else {
+
+                certificateContainer.classList.remove('show');
+                certificateContainer.classList.add('fade');
+            
+                setTimeout(() => {
+                    certificateContainer.classList.add('d-none');
+                }, 200); 
+            }
+        }
+    </script>
+</body>

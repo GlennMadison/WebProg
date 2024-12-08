@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('upvotes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->morphs('votable'); // To support polymorphic relation
+            $table->morphs('votable');
             $table->enum('vote_type', ['upvote', 'downvote']);
             $table->timestamps();
 
-            $table->unique(['user_id', 'votable_id', 'votable_type']); // Ensure a user can vote only once per item
+            $table->unique(['user_id', 'votable_id', 'votable_type']); 
         });
     }
 

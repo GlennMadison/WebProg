@@ -7,9 +7,6 @@ use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\CommentController;
 
 
-Route::get('/test', function () {
-    return view('test');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -21,19 +18,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
-Route::get('/', [ThreadController::class, 'index'])->name('threads.thread.index');
 
 
+Route::get('/', [ThreadController::class, 'search'])->name('threads.search');
 Route::get('threads/create', [ThreadController::class, 'create'])->name('threads.thread.create');
 Route::post('threads', [ThreadController::class, 'store'])->name('threads.thread.store');
+Route::delete('/threads/{thread}', [ThreadController::class, 'destroy'])->name('threads.destroy');
+
 
 
 Route::get('threads/{thread}', [ThreadController::class, 'show'])->name('threads.thread.show');
 
 Route::post('threads/{thread}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 Route::post('/vote/{type}/{id}', [VoteController::class, 'vote'])->name('vote');
+
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 

@@ -30,4 +30,14 @@ class CommentController extends Controller
             ->with('success', 'Comment posted successfully.');
     }
 
+    public function destroy( Comment $comment)
+    {
+        if(auth()->user()->id != $comment->user_id) {
+            return response()->json(['error' => 'Unauthorized' , 'id' => auth()->user()->id , 'commentId' => $comment], 403);
+        }
+
+        $comment->delete();
+
+        return back()->with('success','Comment deleted successfully.');
+    }
 }

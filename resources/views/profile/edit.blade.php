@@ -13,16 +13,31 @@
             <div class="col-md-6">
                 <div class="p-4 bg-white border rounded shadow-sm">
                     <header>
-                        <h2 class="h4 text-dark">
-                            {{ __('Profile Information') }}
+
+                        @if(Auth::user()->profile_photo_path)
+                        <img src="{{ Auth::user()->profile_photo_path }}" alt="Button Image" class="rounded-circle my-2" width="100" height="100">
+                        @else
+                        <img src="{{ asset('ProfilePlaceholder.jpg') }}" alt="Button Image" class="rounded-circle my-2" width="100" height="100">
+                        @endif
+
+                        <h2 class="h4 text-dark d-flex align-items-center mt-2">
+                            @if(Auth::user()->role == 'doctor')
+                            <span class="badge bg-primary font-weight-normal me-2">Doctor</span>
+                            @endif
+                            {{Auth::user()->name}}
                         </h2>
                         <p class="text-muted">
-                            {{ __("Update your account's profile information and email address.") }}
+                            Welcome back, {{Auth::user()->name}} 
                         </p>
                     </header>
                 </div>
             </div>
 
+            <div class="col-md-6">
+                <div class="p-4 bg-white border rounded shadow-sm">
+                    @include('profile.partials.delete-user-form')
+                </div>
+            </div>
             <div class="col-md-6">
                 <div class="p-4 bg-white border rounded shadow-sm">
                     @include('profile.partials.update-profile-information-form')
@@ -35,11 +50,6 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="p-4 bg-white border rounded shadow-sm">
-                    @include('profile.partials.delete-user-form')
-                </div>
-            </div>
         </div>
     </div>
 </div>
