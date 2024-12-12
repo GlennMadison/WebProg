@@ -2,7 +2,7 @@
 
 @section('header')
 <h2 class="fw-semibold text-xl text-dark-emphasis">
-    {{ __('Profile') }}
+    @lang('messages.profile')
 </h2>
 @endsection
 
@@ -22,12 +22,12 @@
 
                         <h2 class="h4 text-dark d-flex align-items-center mt-2">
                             @if(Auth::user()->role == 'doctor')
-                            <span class="badge bg-primary font-weight-normal me-2">Doctor</span>
+                            <span class="badge bg-primary font-weight-normal me-2">@lang('messages.dokter')</span>
                             @endif
                             {{Auth::user()->name}}
                         </h2>
                         <p class="text-muted">
-                            Welcome back, {{Auth::user()->name}} 
+                            @lang('messages.welcome') {{Auth::user()->name}} 
                         </p>
                     </header>
                 </div>

@@ -4,6 +4,8 @@
   }
 </style>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css">
+
 <nav class="navbar navbar-expand-lg navbar-dark p-2 bg-dark"
   style="position: fixed; z-index: 1050; width: 100%; top: 0; left: 0;">
   <div class="container-fluid">
@@ -24,10 +26,26 @@
 
     <div class="" id="navbarNav">
       <ul class="navbar-nav ms-auto">
+      <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              @if (app()->getLocale() == 'id')
+                  <i class="flag-icon flag-icon-id"></i> Bahasa Indonesia
+              @elseif (app()->getLocale() == 'jp')
+                  <i class="flag-icon flag-icon-jp"></i> 日本語
+              @else
+                  <i class="flag-icon flag-icon-us"></i> English
+              @endif
+          </button>
+          <ul class = "dropdown-menu" aria-labelledby = "navbarDropdownMenuLink">
+            <a class = "dropdown-item" href="locale/en"> <i class="flag-icon flag-icon-us"></i> English</a>
+            <a class = "dropdown-item" href="locale/id"> <i class="flag-icon flag-icon-id"></i> Bahasa Indonesia</a>
+            <a class = "dropdown-item" href="locale/jp"><i class="flag-icon flag-icon-jp"></i> 日本語</a>
+          </ul>
+      </div>
         @if(Auth::check())
         <div class="d-flex align-items-center justify-content-center">
           <a class="btn btn-primary border-2 fw-bold mx-4 " href="/threads/create">
-            Create
+            @lang('messages.create')
             <i class="bi bi-plus fw-bold"></i>
           </a>
           <div class="dropdown ">
@@ -46,19 +64,19 @@
               <li>
                 <li>
                   <a class="dropdown-item text-primary fw-bold" href="{{ route('profile.show', Auth::user()) }}">
-                    Profile
+                    @lang('messages.profile')
                   </a>
                 </li>
               </li>
               <li>
-                <a class="btn text-primary fw-bold dropdown-item" href="/profile">Settings</a>
+                <a class="btn text-primary fw-bold dropdown-item" href="/profile">@lang('messages.settings')</a>
               </li>
               <li>
                 <form method="POST" class="" action="{{ route('logout') }}">
                   @csrf
                   <a class="btn text-primary fw-bold dropdown-item" :href="route('logout')"
                     onclick="event.preventDefault(); this.closest('form').submit();">
-                    Log Out
+                    @lang('messages.logout')
                   </a>
                 </form>
               </li>
@@ -67,8 +85,8 @@
         </div>
         @else
         <div class="">
-          <a class="btn btn-outline-primary border-2 fw-bold " href="/login">Login</a>
-          <a class="btn btn-primary ms-2" href="/register">Register</a>
+          <a class="btn btn-outline-primary border-2 fw-bold " href="/login">@lang('messages.login')</a>
+          <a class="btn btn-primary ms-2" href="/register">@lang('messages.register')</a>
         </div>
         @endif
       </ul>

@@ -14,10 +14,10 @@
                     <div class="py-2 d-flex align-items-center">
                         <h4 class="me-2 mb-0">{{ $user->name }}</h4> <!-- Added mb-0 to remove margin-bottom -->
                         @if($user->role == 'doctor')
-                        <span class="badge bg-primary font-weight-normal ms-2">Doctor</span> <!-- Added ms-2 for left margin -->
+                        <span class="badge bg-primary font-weight-normal ms-2">@lang('messages.dokter')</span> <!-- Added ms-2 for left margin -->
                         @endif
                     </div>
-                    <p>Joined: {{ $user->created_at->diffForHumans() }}</p>
+                    <p>@lang('messages.joined') {{ $user->created_at->diffForHumans() }}</p>
                 </div>
                 
                     
@@ -27,11 +27,11 @@
         <div class="col-md-9">
             <div class="card mb-4">
                 <div class="card-header">
-                    <h4>Threads</h4>
+                    <h4>@lang('messages.thread')</h4>
                 </div>
                 <div class="card-body">
                     @if($threads->isEmpty())
-                    <p>No threads created yet.</p>
+                    <p>@lang('messages.emptyt')</p>
                     @else
                     <ul class="list-group">
                         @foreach($threads as $thread)
@@ -48,11 +48,11 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h4>Comments</h4>
+                    <h4>@lang('messages.comment')</h4>
                 </div>
                 <div class="card-body">
                     @if($comments->isEmpty())
-                    <p>No comments created yet.</p>
+                    <p>@lang('messages.emptyc')</p>
                     @else
                     <ul class="list-group">
                         @foreach($comments as $comment)

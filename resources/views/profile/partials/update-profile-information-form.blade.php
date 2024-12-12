@@ -1,11 +1,11 @@
 <section class="mb-4">
     <header>
         <h2 class="h4 text-dark">
-            {{ __('Profile Information') }}
+            @lang('messages.pinformation')
         </h2>
 
         <p class="text-muted mt-2">
-            {{ __("Update your account's profile information and email address.") }}
+            @lang('messages.updatenoti')
         </p>
     </header>
 
@@ -20,7 +20,7 @@
         @method('patch')
 
         <div class="mb-3">
-            <label for="name" class="form-label">{{ __('Name') }}</label>
+            <label for="name" class="form-label">@lang('messages.name')</label>
             <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $user->name) }}"
                 required autofocus autocomplete="name" />
             @if ($errors->has('name'))
@@ -31,7 +31,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="email" class="form-label">{{ __('Email') }}</label>
+            <label for="email" class="form-label">@lang('messages.email')</label>
             <input type="email" id="email" name="email" class="form-control" value="{{ old('email', $user->email) }}"
                 required autocomplete="username" />
             @if ($errors->has('email'))
@@ -43,16 +43,16 @@
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
             <div class="mt-3">
                 <p class="text-muted small">
-                    {{ __('Your email address is unverified.') }}
+                    @lang('messages.notverified')
 
                     <button form="send-verification" class="btn btn-link p-0 text-decoration-none">
-                        {{ __('Click here to re-send the verification email.') }}
+                        @lang('messages.resend')   
                     </button>
                 </p>
 
                 @if (session('status') === 'verification-link-sent')
                 <p class="text-success small mt-2">
-                    {{ __('A new verification link has been sent to your email address.') }}
+                    @lang('messages.resendfinish')
                 </p>
                 @endif
             </div>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="mb-3 ">
-            <label for="name" class="form-label">Profile picture</label>
+            <label for="name" class="form-label">@lang('messages.profilepicture')</label>
 
 
             <input type="file" name="profile_image" id="profile_image" class="form-control" type="file"
@@ -69,12 +69,12 @@
 
         <div class="d-flex align-items-center gap-3">
             <button type="submit" class="btn btn-primary">
-                {{ __('Save') }}
+                @lang('messages.save')
             </button>
 
             @if (session('status') === 'profile-updated')
             <p class="text-success small mb-0">
-                {{ __('Saved.') }}
+                @lang('messages.saved')
             </p>
             @endif
         </div>

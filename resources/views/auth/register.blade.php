@@ -23,7 +23,7 @@
         </div>
 
         <div class="mb-3">
-            <label for="name" class="form-label">{{ __('Name') }}</label>
+            <label for="name" class="form-label">@lang('messages.name')</label>
             <input id="name" class="form-control" type="text" name="name" value="{{ old('name') }}" required autofocus
                 autocomplete="name" />
             @if($errors->has('name'))
@@ -33,7 +33,7 @@
 
 
         <div class="mb-3">
-            <label for="email" class="form-label">{{ __('Email') }}</label>
+            <label for="email" class="form-label">@lang('messages.email')</label>
             <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" required
                 autocomplete="username" />
             @if($errors->has('email'))
@@ -43,10 +43,10 @@
 
 
         <div class="mb-3">
-            <label for="role" class="form-label">{{ __('Role') }}</label>
+            <label for="role" class="form-label">@lang('messages.role')</label>
             <select id="role" name="role" class="form-select" required onchange="toggleDoctorCertificate()">
-                <option value="normal_user">Normal User</option>
-                <option value="doctor">Doctor</option>
+                <option value="normal_user">@lang('messages.normal')</option>
+                <option value="doctor">@lang('messages.dokter')</option>
             </select>
             @if($errors->has('role'))
             <label class="text-danger pt-1">{{ $errors->first('role') }}</label>
@@ -55,7 +55,7 @@
 
 
         <div id="doctor-certificate-container" class="mb-3 d-none">
-            <label for="doctor_certificate" class="form-label">{{ __('Doctor Certificate') }}</label>
+            <label for="doctor_certificate" class="form-label">@lang('messages.certi')</label>
             <input id="doctor_certificate" class="form-control" type="file" name="doctor_certificate" />
             @if($errors->has('doctor_certificate'))
             <label class="text-danger pt-1">{{ $errors->first('doctor_certificate') }}</label>
@@ -64,7 +64,7 @@
 
 
         <div class="mb-3">
-            <label for="password" class="form-label">{{ __('Password') }}</label>
+            <label for="password" class="form-label">@lang('messages.password')</label>
             <input id="password" class="form-control" type="password" name="password" required autocomplete="" />
             @if($errors->has('password'))
             <label class="text-danger pt-1">{{ $errors->first('password') }}</label>
@@ -74,7 +74,7 @@
 
 
         <div class="mb-3">
-            <label for="password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
+            <label for="password_confirmation" class="form-label">@lang('messages.cpass')</label>
             <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required
                 autocomplete="" />
             @if($errors->has('password_confirmation'))
@@ -84,11 +84,11 @@
 
         <div class="d-flex justify-content-end mt-3">
             <a class="text-muted text-decoration-none me-3" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+                @lang('messages.registered')
             </a>
 
             <button type="submit" class="btn btn-primary">
-                {{ __('Register') }}
+                @lang('messages.register')
             </button>
         </div>
     </form>
