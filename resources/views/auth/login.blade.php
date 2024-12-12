@@ -25,7 +25,7 @@
         </div>
         <div class="">
             <div class="mb-3">
-                <label for="email" class="form-label">{{ __('Email') }}</label>
+                <label for="email" class="form-label">@lang('messages.email')</label>
                 <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" required
                     autofocus autocomplete="username" />
                 @if($errors->has('email'))
@@ -34,7 +34,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="password" class="form-label">{{ __('Password') }}</label>
+                <label for="password" class="form-label">@lang('messages.password')</label>
                 <input id="password" class="form-control" type="password" name="password" required
                     autocomplete="current-password" />
                 @if($errors->has('password'))
@@ -44,18 +44,18 @@
 
             <div class="form-check mb-3">
                 <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
-                <label for="remember_me" class="form-check-label text-muted">{{ __('Remember me') }}</label>
+                <label for="remember_me" class="form-check-label text-muted">@lang('messages.remember')</label>
             </div>
 
             <div class="d-flex justify-content-end mt-3 align-items-center ">
                 @if (Route::has('password.request'))
                 <a class="text-muted  me-3 " href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                    @lang('messages.forgor')
                 </a>
                 @endif
 
                 <button type="submit" class="btn btn-primary">
-                    {{ __('Log in') }}
+                    @lang('messages.login')
                 </button>
             </div>
         </div>

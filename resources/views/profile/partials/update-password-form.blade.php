@@ -1,11 +1,11 @@
 <section class="mb-4">
     <header>
         <h2 class="h4 text-dark">
-            {{ __('Update Password') }}
+            @lang('messages.updatep')
         </h2>
 
         <p class="text-muted mt-2">
-            {{ __('Ensure your account is using a long, random password to stay secure.') }}
+            @lang('messages.passnoti')
         </p>
     </header>
 
@@ -15,7 +15,7 @@
 
         <div class="mb-3">
             <label for="update_password_current_password" class="form-label">
-                {{ __('Current Password') }}
+                @lang('messages.curr_pass')
             </label>
             <input type="password" id="update_password_current_password" name="current_password" class="form-control"
                 autocomplete="current-password" />
@@ -28,7 +28,7 @@
 
         <div class="mb-3">
             <label for="update_password_password" class="form-label">
-                {{ __('New Password') }}
+                @lang('messages.newpass')
             </label>
             <input type="password" id="update_password_password" name="password" class="form-control"
                 autocomplete="new-password" />
@@ -41,7 +41,7 @@
 
         <div class="mb-3">
             <label for="update_password_password_confirmation" class="form-label">
-                {{ __('Confirm Password') }}
+                @lang('messages.cpass')
             </label>
             <input type="password" id="update_password_password_confirmation" name="password_confirmation"
                 class="form-control" autocomplete="new-password" />
@@ -54,12 +54,12 @@
 
         <div class="d-flex align-items-center gap-3">
             <button type="submit" class="btn btn-primary">
-                {{ __('Save') }}
+                @lang('messages.save')
             </button>
 
             @if (session('status') === 'password-updated')
             <p class="text-success small mb-0">
-                {{ __('Saved.') }}
+                @lang('messages.saved')
             </p>
             @endif
         </div>

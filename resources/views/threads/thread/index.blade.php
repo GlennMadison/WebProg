@@ -9,12 +9,20 @@
         <div class="list-group-item p-4  list-group-item-action" role="link" tabindex="0"
             onclick="window.location='{{ route('threads.thread.show', $thread) }}'">
 
-
             @include('profile.profileBanner', ['object' => $thread])
             <h5 class="mb-1">
                 <strong>{{ $thread->title }}</strong>
             </h5>
-            <p class="mb-1">{{ Str::limit($thread->body, 100) }}</p>
+            <div>
+                <p id="thread-body-{{ $thread->id }}" data-full-content="{{ $thread->body }}">
+                    {{ Str::limit($thread->body, 250) }} 
+                    @if(strlen($thread->body) > 250)
+                    <a href="javascript:void(0)" id="toggle-more-{{ $thread->id }}" onclick="toggleContent({{ $thread->id }})">
+                        {{ __('messages.show_more') }}
+                    </a>       
+                    @endif
+                </p>
+            </div>
             @if($thread->threads_image)
             <img class="rounded img-fluid my-2" src="{{ $thread->threads_image }}" alt="Thread Image"
                 style="max-width: 20vw; height: auto;">
@@ -28,7 +36,7 @@
                         <i class="bi bi-caret-up-fill"></i>
                     </button>
                     @else
-                    <a href="{{ route('login') }}" class="btn btn-primary p-2 ">
+                    <a href="{{ route('login') }}" class="btn btn-primary p-2 " id="show-more">
                         <i class="bi bi-caret-up-fill"></i>
                     </a>
                     @endif
@@ -61,3 +69,18 @@
     </div>
 </div>
 @endsection
+
+<script>
+function toggleContent(threadId) {
+    event.stopPropagation();
+    const threadBody = document.getElementById(`thread-body-${threadId}`);
+    const toggleLink = document.getElementById(`toggle-more-${threadId}`);
+    const fullContent = threadBody.dataset.fullContent;
+    
+    if (toggleLink.innerText === '{{ __('messages.show_more') }}') {
+        threadBody.innerHTML = fullContent + ' <a href="javascript:void(0)" id="toggle-more-' + threadId + '" onclick="toggleContent(' + threadId + ')">{{ __('messages.show_less') }}</a>';
+    } else {    
+        threadBody.innerHTML = fullContent.substring(0, 200) + ' <a href="javascript:void(0)" id="toggle-more-' + threadId + '" onclick="toggleContent(' + threadId + ')">{{ __('messages.show_more') }}</a>';
+    }
+}
+</script>
