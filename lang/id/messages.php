@@ -47,7 +47,13 @@ return[
     'notverified' => 'Alamat email belum terverifikasi',
     'resendfinish' => 'Link verifikasi baru telah dikirim ke alamat email',
     'resend' => 'Klik di sini untuk mengirim ulang email verifikasi',
-    'profilepicture' => 'Foto profil'
+    'profilepicture' => 'Foto profil',
+    'newthread' => 'Buat thread baru',
+    'title' => 'Judul',
+    'body' => 'Isi',
+    'uploadphoto' => 'Unggah foto',
+    'createthread' => 'Buat',
+    'search' => 'Cari'
 ];
 
 ?>
