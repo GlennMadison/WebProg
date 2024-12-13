@@ -4,7 +4,7 @@
 <div class="container py-4">
 
     <div class="  ">
-        <h1 class="mb-4">@lang('messages.newthread')</h1>
+        <h1 class="mb-4">@lang('messages.create_new_thread')</h1>
         <form action="{{ route('threads.thread.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
@@ -18,15 +18,11 @@
             </div>
 
             <div class="mb-3">
-            
-
-                <label for="name" class="form-label">@lang('messages.uploadphoto')</label>
-                
-                
+                <label for="name" class="form-label">@lang('messages.upload_picture')</label>  
                 <input type="file" name="threads_image" id="threads_image" class="form-control" type="file" accept="image/*"></input>
             </div>
+            <button type="submit" class="btn btn-primary">@lang('messages.create_thread')</button>
 
-            <button type="submit" class="btn btn-primary">@lang('messages.createthread')</button>
         </form>
     </div>
 </div>

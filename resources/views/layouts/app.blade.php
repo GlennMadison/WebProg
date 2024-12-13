@@ -8,13 +8,19 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('bootstrap-icons-1.11.3/font/bootstrap-icons.css') }}" rel="stylesheet">
 </head>
 
-<body>
+
+<body class="custom-scrollbar">
+
 
     @include('layouts.navigation')
 
