@@ -13,8 +13,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-<<<<<<< HEAD
-=======
+
 Route::get('/aboutus',function () {
     return view('layouts.aboutus');
 })->name('aboutus');
@@ -23,7 +22,7 @@ Route::get('/help', function () {
     return view('layouts.help'); 
 })->name('help');
 
->>>>>>> 6f2c45d (Udah Jadi)
+
 Route::middleware('auth', LocalizationMiddleWare::class)->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -38,11 +37,6 @@ Route::middleware(LocalizationMiddleWare::class)->group(function(){
     Route::post('threads', [ThreadController::class, 'store'])->name('threads.thread.store');
     Route::delete('/threads/{thread}', [ThreadController::class, 'destroy'])->name('threads.destroy');
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 6f2c45d (Udah Jadi)
     Route::get('threads/{thread}', [ThreadController::class, 'show'])->name('threads.thread.show');
 
     Route::post('threads/{thread}/comments', [CommentController::class, 'store'])->name('comments.store');
