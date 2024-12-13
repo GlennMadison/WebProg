@@ -25,7 +25,6 @@ return[
     'logout' => 'Keluar',
     'profile' => 'Profil',
     'settings' => 'Pengaturan',
-
     'welcome' => 'Selamat datang,',
     'delacc' => 'Hapus akun',
     'deletenoti' => 'Jika akun Anda dihapus, semua sumber daya dan data terkait akan dihapus secara permanen. Sebelum menghapus akun, harap unduh data atau informasi yang ingin Anda simpan.',
@@ -53,7 +52,8 @@ return[
     'body' => 'Isi',
     'uploadphoto' => 'Unggah foto',
     'createthread' => 'Buat',
-    'search' => 'Cari'
+    'search' => 'Cari',
+    'show_original' => 'Tampilkan Asli'
 ];
 
 ?>

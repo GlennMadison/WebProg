@@ -53,7 +53,8 @@ return[
     'body' => '本文',
     'uploadphoto' => '画像をアップロード',
     'createthread' => '作成',
-    'search' => '検索'
+    'search' => '検索',
+    'show_original' => '元の表示'
 ];
 
 ?>

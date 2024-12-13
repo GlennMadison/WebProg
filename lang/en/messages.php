@@ -25,7 +25,6 @@ return[
     'logout' => 'Logout',
     'profile' => 'Profile',
     'settings' => 'Settings',
-
     'welcome' => 'Welcome,',
     'delacc' => 'Delete Account',
     'deletenoti' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',
@@ -53,7 +52,8 @@ return[
     'body' => 'Body',
     'uploadphoto' => 'Upload Picture',
     'createthread' => 'Create Thread',
-    'search' => 'Search'
+    'search' => 'Search',
+    'show_original' => 'Show Original'
 ];
 
 ?>
