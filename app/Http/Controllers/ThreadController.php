@@ -87,10 +87,6 @@ class ThreadController extends Controller
                 ->orWhere('body', 'like', '%' . $searchTerm . '%')
                 ->paginate(5)
                 ->appends(['filter' => $filter, 'search' => $searchTerm]);
-            $threads = Thread::with('user')
-                ->latest()
-                ->paginate(5)
-                ->appends(['filter' => $filter]);
         } else {
             $threads = Thread::with('user')
                 ->latest()
