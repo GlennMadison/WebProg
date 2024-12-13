@@ -12,9 +12,9 @@
                     <img src="{{ asset('ProfilePlaceholder.jpg') }}" alt="Button Image" class="rounded-circle my-2" width="100" height="100">
                     @endif
                     <div class="py-2 d-flex align-items-center">
-                        <h4 class="me-2 mb-0">{{ $user->name }}</h4> <!-- Added mb-0 to remove margin-bottom -->
+                        <h4 class="me-2 mb-0">{{ $user->name }}</h4>
                         @if($user->role == 'doctor')
-                        <span class="badge bg-primary font-weight-normal ms-2">@lang('messages.dokter')</span> <!-- Added ms-2 for left margin -->
+                        <span class="badge bg-primary font-weight-normal ms-2">@lang('messages.dokter')</span>
                         @endif
                     </div>
                     <p>@lang('messages.joined') {{ $user->created_at->diffForHumans() }}</p>

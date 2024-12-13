@@ -54,6 +54,12 @@
                 </a>
                 @endif
 
+
+                <p class="mt-3 me-1">@lang('messages.dont_have_account')</p>
+                <a class="me-1" href="{{ route('register') }}">
+                    @lang('messages.register')
+                </a>
+                <p class="mt-3  me-3 ">@lang('messages.here')</p>
                 <button type="submit" class="btn btn-primary">
                     @lang('messages.login')
                 </button>

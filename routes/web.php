@@ -13,6 +13,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::get('/aboutus',function () {
+    return view('layouts.aboutus');
+})->name('aboutus');
+
+Route::get('/help', function () {
+    return view('layouts.help'); 
+})->name('help');
+
+
 Route::middleware('auth', LocalizationMiddleWare::class)->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
