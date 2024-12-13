@@ -47,7 +47,13 @@ return[
     'notverified' => 'まだスレッドはありません',
     'resend' => 'ここをクリックして、確認メールを再送信してください。',
     'resendfinish' => '新しい確認リンクがあなたのメールアドレスに送信されました。',
-    'profilepicture' => 'プロフィール画像'
+    'profilepicture' => 'プロフィール画像',
+    'newthread' => 'スレッドを作成',
+    'title' => 'タイトル',
+    'body' => '本文',
+    'uploadphoto' => '画像をアップロード',
+    'createthread' => '作成',
+    'search' => '検索'
 ];
 
 ?>

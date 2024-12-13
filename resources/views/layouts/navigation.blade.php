@@ -17,7 +17,7 @@
 
     <form class="form-inline d-flex align-items-center justify-content-center" method="GET"
       action="{{ route('threads.search') }}">
-      <input class="form-control mx-2" style="min-width: 50vw" type="search" name="search" placeholder="Search...." aria-label="Search">
+      <input class="form-control mx-2" style="min-width: 50vw" type="search" name="search" placeholder="@lang('messages.search')." aria-label="Search">
       <input type="hidden" name="filter" value="search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
         <i class="bi bi-search fw-bold"></i>
@@ -37,9 +37,9 @@
               @endif
           </button>
           <ul class = "dropdown-menu" aria-labelledby = "navbarDropdownMenuLink">
-            <a class = "dropdown-item" href="locale/en"> <i class="flag-icon flag-icon-us"></i> English</a>
-            <a class = "dropdown-item" href="locale/id"> <i class="flag-icon flag-icon-id"></i> Bahasa Indonesia</a>
-            <a class = "dropdown-item" href="locale/jp"><i class="flag-icon flag-icon-jp"></i> 日本語</a>
+            <a class = "dropdown-item" href="{{route('lang.switch', 'en')}}"> <i class="flag-icon flag-icon-us"></i> English</a>
+            <a class = "dropdown-item" href="{{route('lang.switch', 'id')}}"> <i class="flag-icon flag-icon-id"></i> Bahasa Indonesia</a>
+            <a class = "dropdown-item" href="{{route('lang.switch', 'jp')}}"><i class="flag-icon flag-icon-jp"></i> 日本語</a>
           </ul>
       </div>
         @if(Auth::check())

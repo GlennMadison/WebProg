@@ -27,8 +27,6 @@ Route::middleware(LocalizationMiddleWare::class)->group(function(){
     Route::post('threads', [ThreadController::class, 'store'])->name('threads.thread.store');
     Route::delete('/threads/{thread}', [ThreadController::class, 'destroy'])->name('threads.destroy');
 
-
-
     Route::get('threads/{thread}', [ThreadController::class, 'show'])->name('threads.thread.show');
 
     Route::post('threads/{thread}/comments', [CommentController::class, 'store'])->name('comments.store');
