@@ -75,6 +75,14 @@ return[
     'notverified' => 'Your email address is unverified.',
     'resend' => 'Click here to re-send the verification email.',
     'resendfinish' => 'A new verification link has been sent to your email address.',
+    'profilepicture' => 'Profile Picture',
+    'newthread' => 'Create new thread',
+    'title' => 'Title',
+    'body' => 'Body',
+    'uploadphoto' => 'Upload Picture',
+    'createthread' => 'Create Thread',
+    'search' => 'Search',
+    'show_original' => 'Show Original'
     'profilepicture' => 'Profile Picture'
 ];
 

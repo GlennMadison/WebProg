@@ -14,6 +14,16 @@ return [
     |
     */
 
+    'azure_translator' => [
+        'key' => env('AZURE_TRANSLATOR_KEY'),
+        'endpoint' => env('AZURE_TRANSLATOR_ENDPOINT'),
+        'region' => env('AZURE_TRANSLATOR_REGION'),
+    ],
+
+    'lecto' => [
+        'api_key' => env('LECTO_API_KEY'),
+    ],
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
