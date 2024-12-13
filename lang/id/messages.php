@@ -25,11 +25,6 @@ return[
     'logout' => 'Keluar',
     'profile' => 'Profil',
     'settings' => 'Pengaturan',
-<<<<<<< HEAD
-
-    'welcome' => 'Selamat datang,',
-    'delacc' => 'Hapus akun',
-=======
     'dont_have_account' => 'Tidak punya akun?',
     'here' => 'Disini',
     'create_new_thread' => 'Buat Thread Baru',
@@ -61,7 +56,6 @@ return[
     'faq_4_answer' => 'Jika Anda lupa kata sandi, buka halaman login dan klik "Lupa Kata Sandi". Masukkan alamat email Anda yang terdaftar, dan kami akan mengirimkan tautan untuk mengatur ulang kata sandi.',
     'faq_5_question' => 'Jenis konten apa yang dilarang di forum?',
     'faq_5_answer' => 'Konten yang dilarang termasuk spam, bahasa ofensif, informasi salah, dan materi yang ilegal atau berbahaya. Pelanggaran dapat mengakibatkan penangguhan akun.',
->>>>>>> 6f2c45d (Udah Jadi)
     'deletenoti' => 'Jika akun Anda dihapus, semua sumber daya dan data terkait akan dihapus secara permanen. Sebelum menghapus akun, harap unduh data atau informasi yang ingin Anda simpan.',
     'askdel' => 'Apakah Anda yakin ingin menghapus akun Anda?',
     'cancel' => 'Batalkan',
@@ -81,17 +75,7 @@ return[
     'notverified' => 'Alamat email belum terverifikasi',
     'resendfinish' => 'Link verifikasi baru telah dikirim ke alamat email',
     'resend' => 'Klik di sini untuk mengirim ulang email verifikasi',
-<<<<<<< HEAD
-    'profilepicture' => 'Foto profil',
-    'newthread' => 'Buat thread baru',
-    'title' => 'Judul',
-    'body' => 'Isi',
-    'uploadphoto' => 'Unggah foto',
-    'createthread' => 'Buat',
-    'search' => 'Cari'
-=======
     'profilepicture' => 'Foto profil'
->>>>>>> 6f2c45d (Udah Jadi)
 ];
 
 ?>

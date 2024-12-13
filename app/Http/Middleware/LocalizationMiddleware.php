@@ -22,9 +22,5 @@ class LocalizationMiddleware
         App::setLocale($locale);
 
         return $next($request);
-<<<<<<< HEAD
-        return $next($request);
-=======
->>>>>>> 6f2c45d (Udah Jadi)
     }
 }

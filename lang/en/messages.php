@@ -25,10 +25,6 @@ return[
     'logout' => 'Logout',
     'profile' => 'Profile',
     'settings' => 'Settings',
-<<<<<<< HEAD
-
-    'welcome' => 'Welcome,',
-=======
     'dont_have_account' => 'Don\'t have an account?',
     'here' => 'Here',
     'welcome' => 'Welcome,',
@@ -59,7 +55,6 @@ return[
     'faq_4_answer' => 'If you forget your password, go to the login page and click "Forgot Password." Enter your registered email address, and we’ll send you a password reset link.',
     'faq_5_question' => 'What types of content are prohibited on the forum?',
     'faq_5_answer' => 'Prohibited content includes spam, offensive language, misinformation, and illegal or harmful material. Violations may result in account suspension.',
->>>>>>> 6f2c45d (Udah Jadi)
     'delacc' => 'Delete Account',
     'deletenoti' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',
     'askdel' => 'Are you sure you want to delete your account?',
@@ -80,17 +75,7 @@ return[
     'notverified' => 'Your email address is unverified.',
     'resend' => 'Click here to re-send the verification email.',
     'resendfinish' => 'A new verification link has been sent to your email address.',
-<<<<<<< HEAD
-    'profilepicture' => 'Profile Picture',
-    'newthread' => 'Create new thread',
-    'title' => 'Title',
-    'body' => 'Body',
-    'uploadphoto' => 'Upload Picture',
-    'createthread' => 'Create Thread',
-    'search' => 'Search'
-=======
     'profilepicture' => 'Profile Picture'
->>>>>>> 6f2c45d (Udah Jadi)
 ];
 
 ?>
